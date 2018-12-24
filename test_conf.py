@@ -1,3 +1,4 @@
+import os
 import warnings
 from unittest import TestCase
 import conf
@@ -7,6 +8,11 @@ class TestConfg(TestCase):
 
     def test_read_yml(self):
         conf.load('test_resources/conf1.yml')
+        self.assertEqual(conf.get('message'), 'this is yml')
+
+    def test_read_yml_from_env_var(self):
+        os.environ['configfile'] = 'test_resources/conf1.yml'
+        conf.load('configfile')
         self.assertEqual(conf.get('message'), 'this is yml')
 
     def test_get_default(self):
@@ -63,4 +69,4 @@ class TestConfg(TestCase):
             warnings.simplefilter('always')
             conf.load('')
             assert len(w) == 1
-            assert 'empty filename' in str(w[-1].message)
+            assert 'empty name' in str(w[-1].message)

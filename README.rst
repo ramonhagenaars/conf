@@ -30,7 +30,23 @@ Start your app with your configuration file:
 
     python your_app.py --config your_config.yml
 
-The ``--config`` argument can be a relative path or an absolute path to a file. You are allowed to provide multiple configuration files (separated by a single space), in which case any setting of a former configuration file can be overwritten by a setting of a later configuration file, if the name of that setting is identical.
+Or:
+
+::
+
+    python your_app.py --config config_env_var
+
+The ``--config`` argument can be:
+
+  - a relative path to a file;
+  - an absolute path to a file;
+  - the name of an environment variable which value holds one of the above.
+
+You are allowed to provide multiple configuration names (separated by a single space), in which case any setting of a former
+configuration file can be overwritten by a setting of a later configuration file (if the name of that setting is identical).
+
+Once you have supplied your application with some configuration, you can fetch the settings of that configuration. There are
+three options of how to do that.
 
 Fetching your setting (option 1)
 """"""""""""""""""""""""""""""""
