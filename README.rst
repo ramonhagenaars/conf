@@ -7,9 +7,9 @@ A *very* simple and *lightweight* configuration loader and parser for Python.
 
 Supports:
 
--  yaml files (``*.yml``, ``*.yaml``)
--  ini files (``*.ini``)
--  json files (``*.json``)
+  -  yaml files (``*.yml``, ``*.yaml``)
+  -  ini files (``*.ini``)
+  -  json files (``*.json``)
 
 Installation
 ''''''''''''
