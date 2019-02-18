@@ -7,6 +7,7 @@ import argparse
 import warnings
 from pathlib import Path
 from conf.parsers import parse_from_yaml, parse_from_json, parse_from_ini
+import conf
 
 
 get = globals().get  # Capture the `get` method from `dict`.
@@ -44,6 +45,7 @@ def load(*names, override=True):
                 return
         for key in configurations:
             if override or not get(key):
+                setattr(conf, key, configurations[key])
                 globals()[key] = configurations[key]
 
 

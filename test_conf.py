@@ -9,6 +9,10 @@ class TestConfg(TestCase):
     def test_read_yml(self):
         conf.load('test_resources/conf1.yml')
         self.assertEqual(conf.get('message'), 'this is yml')
+        self.assertEqual(conf.message, 'this is yml')
+        self.assertEqual(conf.reader.message, 'this is yml')
+        from conf import message as msg
+        self.assertEqual(msg, 'this is yml')
 
     def test_read_yml_from_env_var(self):
         os.environ['configfile'] = 'test_resources/conf1.yml'
