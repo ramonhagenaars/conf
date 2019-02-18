@@ -41,4 +41,4 @@ Generic configuration module.
 | ``conf.load('complete/path/to/conf.yml')``
 """
 
-from conf.reader import load, get
+from conf.reader import *
