@@ -3,6 +3,12 @@
 History
 -------
 
+0.3.1 (2019-04-25)
+++++++++++++++++++
+
+- Feature: conf.load() returns if parsing fails #4
+- Bugfix: yaml.load() gives warning for python 3.7 #3
+
 0.3.0 (2019-04-25)
 ++++++++++++++++++
 

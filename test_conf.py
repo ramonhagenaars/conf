@@ -82,3 +82,10 @@ class TestConfg(TestCase):
             conf.load('')
             assert len(w) == 1
             assert 'empty name' in str(w[-1].message)
+
+    def test_raise_invalid_config(self):
+        with self.assertRaises(Exception):
+            conf.load('test_resources/bad.yaml', raise_exception=True)
+
+    def test_noraise_invalid_config(self):
+        conf.load('test_resources/bad.yaml')
