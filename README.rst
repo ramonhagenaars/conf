@@ -77,6 +77,17 @@ You can provide a default value if you are not sure the setting will be present:
 
 Note: If you use an ArgumentParser in your own application for other purposes, you must use the ``parse_known_args()`` method of the parser.
 
+Fetching your setting (option 4)
+""""""""""""""""""""""""""""""""
+You can get the configuration as a dictionary and get your setting as you would get any value from a ``dict``:
+
+.. code:: python
+
+    import conf
+    conf_dict = conf.asdict()
+    your_setting = conf_dict.get('your_setting', 'your default value')
+
+
 Meta
 ''''
 This lib was designed and written in 2018 by `finetuned89 <https://github.com/finetuned89>`_ and `ramonhagenaars <https://github.com/ramonhagenaars>`_.

@@ -25,6 +25,14 @@ class TestConfg(TestCase):
         self.assertEqual(conf.get('key_does_not_exist', 'some_value'),
                          'some_value')
 
+    def test_asdict(self):
+        conf.load('test_resources/conf1.yml')
+        d = conf.asdict()
+        self.assertEqual(d.get('key_does_not_exist', None), None)
+        self.assertEqual(d.get('key_does_not_exist', 'some_value'),
+                         'some_value')
+        self.assertEqual(d['message'], 'this is yml')
+
     def test_read_yaml(self):
         conf.load('test_resources/conf2.yaml')
         self.assertEqual(conf.get('message'), 'this is yml')

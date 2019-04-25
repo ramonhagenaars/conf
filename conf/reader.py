@@ -47,8 +47,18 @@ def load(*names, override=True):
             if override or not get(key):
                 setattr(conf, key, configurations[key])
                 globals()[key] = configurations[key]
+                _content[key] = configurations[key]
 
 
+def asdict() -> dict:
+    """
+    Get the loaded configuration as a dict.
+    :return: the config as a dict.
+    """
+    return _content
+
+
+_content = {}
 _supported_types = {
     '.yml': parse_from_yaml,
     '.yaml': parse_from_yaml,
