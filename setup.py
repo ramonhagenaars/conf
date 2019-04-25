@@ -4,7 +4,7 @@ with open('README.rst', 'r') as fh:
     long_description = fh.read()
 
 setup(name='conf',
-      version='0.2.1',
+      version='0.3.0',
       author='Ramon Hagenaars',
       author_email='ramon.hagenaars@gmail.com',
       description='Facilitates a convenient use of configuration files',
