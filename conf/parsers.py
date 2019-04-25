@@ -8,7 +8,7 @@ import yaml
 
 def parse_from_yaml(file_stream):
     # Parse the given file stream of yaml format to a dict.
-    loaded = yaml.load(file_stream)
+    loaded = yaml.load(file_stream, Loader=yaml.FullLoader)
     if loaded:
         return dict(loaded.items())
     return {}
