@@ -13,13 +13,14 @@ import conf
 get = globals().get  # Capture the `get` method from `dict`.
 
 
-def load(*names, override=True):
+def load(*names, override=True, raise_exception=False):
     """
     Read the given names and load their content into this configuration module.
     :param names: a varg that contains paths (str) to the conf files
     that need to be read or names of environment variables with paths.
     :param override: determines whether previously known configurations need to
     be overridden.
+    :param raise_exception: Raise exception on parse failure
     :return: None.
     """
     for name in names:
@@ -42,7 +43,10 @@ def load(*names, override=True):
             except Exception as err:
                 warnings.warn('failed to parse "%s". Reason: %s' %
                               (fname, err))
-                return
+                if raise_exception:
+                    raise
+                else:
+                    return
         for key in configurations:
             if override or not get(key):
                 setattr(conf, key, configurations[key])
