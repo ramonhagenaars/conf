@@ -12,7 +12,7 @@ setup(name='conf',
       long_description_content_type='text/x-rst',
       url='https://github.com/ramonhagenaars/conf',
       packages=['conf'],
-      install_requires=['PyYAML'],
+      install_requires=['PyYAML>=5.1'],
       zip_safe=False,
       classifiers=(
           'Programming Language :: Python :: 3',
