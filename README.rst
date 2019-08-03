@@ -7,16 +7,23 @@ A *very* simple and *lightweight* configuration loader and parser for Python.
 
 Supports:
 
-  -  yaml files (``*.yml``, ``*.yaml``)
-  -  ini files (``*.ini``)
-  -  json files (``*.json``)
+-  ini files (``*.ini``)
+-  json files (``*.json``)
+-  yaml files (``*.yml``, ``*.yaml``)
 
 Installation
 ''''''''''''
 
+Bare installation:
 ::
 
     pip install conf
+
+Installation with support for YAML:
+::
+
+    pip install "conf[yaml]"
+
 
 Usage
 '''''
@@ -38,9 +45,9 @@ Or:
 
 The ``--config`` argument can be:
 
-  - a relative path to a file;
-  - an absolute path to a file;
-  - the name of an environment variable which value holds one of the above.
+- a relative path to a file;
+- an absolute path to a file;
+- the name of an environment variable which value holds one of the above.
 
 You are allowed to provide multiple configuration names (separated by a single space), in which case any setting of a former
 configuration file can be overwritten by a setting of a later configuration file (if the name of that setting is identical).

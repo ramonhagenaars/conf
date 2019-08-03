@@ -2,11 +2,11 @@
 Upon importing loads configurations from the files that are provided as
 commandline argument with `--config`.
 """
+import importlib
 import os
 import argparse
 import warnings
 from pathlib import Path
-from conf.parsers import parse_from_yaml, parse_from_json, parse_from_ini
 import conf
 
 
@@ -20,7 +20,7 @@ def load(*names, override=True, raise_exception=False):
     that need to be read or names of environment variables with paths.
     :param override: determines whether previously known configurations need to
     be overridden.
-    :param raise_exception: Raise exception on parse failure
+    :param raise_exception: Raise exception on parse failure.
     :return: None.
     """
     for name in names:
@@ -33,13 +33,16 @@ def load(*names, override=True, raise_exception=False):
         if not file_path.exists():
             warnings.warn('conf file "%s" not found' % fname)
             return
-        parser = _supported_types.get(suffix.lower(), None)
-        if not parser:
+
+        parser_module = _supported_types.get(suffix.lower(), None)
+        if not parser_module:
             warnings.warn('cannot parse files of type "%s"' % suffix)
             return
+
+        parse = importlib.import_module(parser_module).parse
         with open(fname) as file:
             try:
-                configurations = parser(file)
+                configurations = parse(file)
             except Exception as err:
                 warnings.warn('failed to parse "%s". Reason: %s' %
                               (fname, err))
@@ -64,11 +67,11 @@ def asdict() -> dict:
 
 _content = {}
 _supported_types = {
-    '.yml': parse_from_yaml,
-    '.yaml': parse_from_yaml,
-    '.json': parse_from_json,
-    '.ini': parse_from_ini,
-    'default': parse_from_ini
+    '.yml': 'conf.parsers.yaml_parser',
+    '.yaml': 'conf.parsers.yaml_parser',
+    '.json': 'conf.parsers.json_parser',
+    '.ini': 'conf.parsers.ini_parser',
+    'default': 'conf.parsers.ini_parser'
 }
 _help_msg = 'conf file(s) to load. Supported types are: %s' % \
             ', '.join(_supported_types)
