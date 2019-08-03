@@ -3,11 +3,17 @@
 History
 -------
 
+0.4.0 (2019-08-03)
+++++++++++++++++++
+- Feature: ``conf.load()`` now can raises with ``raise_exception=True``
+- Change: yaml is now an optional dependency
+- Thanks to gijzelaerr
+
 0.3.1 (2019-04-25)
 ++++++++++++++++++
 
-- Feature: conf.load() returns if parsing fails #4
-- Bugfix: yaml.load() gives warning for python 3.7 #3
+- Feature: ``conf.load()`` returns if parsing fails #4
+- Bugfix: ``yaml.load()`` gives warning for python 3.7 #3
 
 0.3.0 (2019-04-25)
 ++++++++++++++++++
