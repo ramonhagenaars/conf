@@ -17,10 +17,10 @@ setup(name='conf',
           'conf.parsers',
       ],
       extras_require={
-          'yaml': ['PyYAML>=5.1'],
+          'yaml': ['PyYAML>=3.12'],
       },
       tests_require=[
-          'PyYAML>=5.1',
+          'PyYAML>=3.12',
       ],
       zip_safe=False,
       classifiers=(
