@@ -8,9 +8,8 @@ def parse(file_stream):
     """
     Parse the given file stream of yaml format to a dict.
     """
-    major, minor = [int(i) for i in yaml.__version__.split('.')][0:2]
-
     if hasattr(yaml, 'FullLoader'):
+        # pyyaml >= 5.1
         loaded = yaml.load(file_stream, Loader=yaml.FullLoader)
     else:
         loaded = yaml.load(file_stream)
