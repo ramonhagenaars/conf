@@ -10,7 +10,7 @@ def parse(file_stream):
     """
     major, minor = [int(i) for i in yaml.__version__.split('.')][0:2]
 
-    if (major == 5 and minor >= 1) or (major > 5):
+    if hasattr(yaml, 'FullLoader'):
         loaded = yaml.load(file_stream, Loader=yaml.FullLoader)
     else:
         loaded = yaml.load(file_stream)
